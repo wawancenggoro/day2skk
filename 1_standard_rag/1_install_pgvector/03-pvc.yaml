@@ -1,0 +1,15 @@
+# Persistent storage for the database files, so data survives pod restarts.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgvector-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  # If omitted, the cluster's default StorageClass is used.
+  # On Cloudeka (Deka) list your options with:  kubectl get storageclass
+  # then uncomment and set the one you want, e.g.:
+  # storageClassName: csi-sc-cinderplus
