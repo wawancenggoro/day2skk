@@ -11,3 +11,4 @@
 1_standard_rag/pdfs/8_deka_notebook.pdf
 1_standard_rag/pdfs/9_deka_ssl.pdf
 var.env
+.ipynb_checkpoints/
