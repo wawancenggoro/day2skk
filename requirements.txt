@@ -1,30 +1,15 @@
-# S3 (Deka Box) upload/download
-boto3==1.43.51
 python-dotenv==1.0.0
-
-# OCR + PDF parsing
+boto3==1.43.51
 docling==2.113.0
-# NOTE: Docling's OCR engine (RapidOCR, pre-installed in the training image)
-# depends on the full opencv-python, which needs the system library libGL.so.1.
-# That is an OS package, not a pip package, so it cannot be fixed from here.
-# Install it once in the image / environment instead:
-#   apt-get install -y libgl1 libglib2.0-0      # Debian/Ubuntu
-#   conda install -c conda-forge libgl          # conda images
-# Do NOT add opencv-python-headless here: it installs a SECOND OpenCV alongside
-# the image's opencv-python and breaks cv2 ("no attribute 'setNumThreads'").
-
-# Embeddings (local model, downloads on first use)
 langchain-huggingface==0.3.1
 sentence-transformers>=2.7.0
-
-# Vector store on PostgreSQL + pgvector
 langchain-postgres==0.0.17
 pgvector>=0.2.5,<0.4
 psycopg[binary]>=3.1,<4
-
-# RAG generation: LLM client + graph orchestration
+langchain==0.3.7
+langchain-community==0.3.7
 langchain-openai==0.2.8
+langchainhub==0.1.15
 langgraph==0.2.76
-
-# LangChain core (0.3 line, compatible with the packages above)
+openai==1.55.3
 langchain-core>=0.3.70,<1.0
