@@ -18,6 +18,11 @@ spec:
       labels:
         app: pgvector
     spec:
+      # postgres/pgvector's official image runs as the `postgres` user (uid/gid 999).
+      # fsGroup makes the mounted PVC group-writable by that uid so Postgres can
+      # write to PGDATA without ever needing root.
+      securityContext:
+        fsGroup: 999
       containers:
         - name: postgres
           # Custom image: Postgres 17 + pgvector + pg_textsearch, built from the
@@ -26,6 +31,10 @@ spec:
           imagePullPolicy: IfNotPresent
           # pg_textsearch must be loaded at server start, so preload its library.
           args: ["postgres", "-c", "shared_preload_libraries=pg_textsearch"]
+          securityContext:
+            runAsUser: 999
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
           ports:
             - name: postgres
               containerPort: 5432
