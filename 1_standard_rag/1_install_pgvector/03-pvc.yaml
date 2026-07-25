@@ -9,7 +9,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  # If omitted, the cluster's default StorageClass is used.
-  # On Cloudeka (Deka) list your options with:  kubectl get storageclass
-  # then uncomment and set the one you want, e.g.:
-  # storageClassName: csi-sc-cinderplus
+  storageClassName: storage-nvme-c2
+  volumeMode: Filesystem

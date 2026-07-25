@@ -22,7 +22,7 @@ spec:
         - name: postgres
           # Custom image: Postgres 17 + pgvector + pg_textsearch, built from the
           # Dockerfile in this folder. Replace with the image name you pushed.
-          image: your-registry.example.com/pgvector-textsearch:pg17
+          image: wawancenggoro/pgvector-textsearch:pg17
           imagePullPolicy: IfNotPresent
           # pg_textsearch must be loaded at server start, so preload its library.
           args: ["postgres", "-c", "shared_preload_libraries=pg_textsearch"]

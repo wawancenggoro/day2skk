@@ -1,5 +1,5 @@
 # Build and push the image (use your own registry; set the same name in 04-deployment.yaml)
-docker build -t your-registry.example.com/pgvector-textsearch:pg17 .
+docker build -t wawancenggoro/pgvector-textsearch:pg17 .
 docker push your-registry.example.com/pgvector-textsearch:pg17
 
 # Deploy (edit the password in 01-secret.yaml first)
